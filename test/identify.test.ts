@@ -1,4 +1,4 @@
-import { isClosingparenthesis, isLetter, isNumber, isOpeningparenthesis, isOperator, isparenthesis, isQuote, isWhiteSpace } from "../src/identify";
+import { isClosingParenthesis, isLetter, isNumber, isOpeningParenthesis, isOperator, isParenthesis, isQuote, isWhiteSpace } from "../src/identify";
 
 describe(isLetter, () => {
   it('should return true for any lowercase letter-e.g., a', () => {
@@ -62,45 +62,45 @@ describe(isWhiteSpace, () => {
   })
 })
 
-describe(isOpeningparenthesis, () => {
+describe(isOpeningParenthesis, () => {
   it('should return true for (', () => {
     const character: string = '(';
 
-    expect(isOpeningparenthesis(character)).toBe(true);
+    expect(isOpeningParenthesis(character)).toBe(true);
   })
 
   it('should return false for anything but (', () => {
     const character: string = ')';
 
-    expect(isOpeningparenthesis(character)).toBe(false);
+    expect(isOpeningParenthesis(character)).toBe(false);
   })
 })
 
-describe(isClosingparenthesis, () => {
+describe(isClosingParenthesis, () => {
   it('should return true for )', () => {
     const character: string = ')';
 
-    expect(isClosingparenthesis(character)).toBe(true);
+    expect(isClosingParenthesis(character)).toBe(true);
   })
 
   it('should return false for anything but )', () => {
     const character: string = '(';
 
-    expect(isClosingparenthesis(character)).toBe(false);
+    expect(isClosingParenthesis(character)).toBe(false);
   })
 })
 
-describe(isparenthesis, () => {
+describe(isParenthesis, () => {
   it('should return true for ( or )', () => {
     const character: string = '(';
 
-    expect(isparenthesis(character)).toBe(true);
+    expect(isParenthesis(character)).toBe(true);
   })
 
   it('should return false for anything but ( or )', () => {
     const character: string = 'z';
 
-    expect(isparenthesis(character)).toBe(false);
+    expect(isParenthesis(character)).toBe(false);
   })
 })
 
