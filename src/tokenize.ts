@@ -50,10 +50,10 @@ export const tokenize = (input: string): Token[] => {
     const character = input[cursor];
 
     if (isNumber(character)) {
-      let number = character;
+      let numberArray: string[] = [character];
       
       while (isNumber(input[++cursor])) {
-        number += input[cursor];
+        numberArray.push(input[cursor]);
       }
 
       if (input[cursor] === undefined) {
@@ -62,17 +62,17 @@ export const tokenize = (input: string): Token[] => {
       
       tokens.push({
         type: TOKEN_TYPE.NUMBER,
-        value: +number
+        value: parseInt(numberArray.join(''), 10)
       });
       
       continue;
     }
 
     if (isLetter(character)) {
-      let keyword = character;
+      let characterArray: string[] = [character];
       
       while (isLetter(input[++cursor])) {
-        keyword += input[cursor];
+        characterArray.push(input[cursor]);
       }
 
       if (input[cursor] === undefined) {
@@ -81,25 +81,25 @@ export const tokenize = (input: string): Token[] => {
 
       tokens.push({
         type: TOKEN_TYPE.KEYWORD,
-        value: keyword
+        value: characterArray.join('')
       });
 
       continue;
     }
 
     if (isQuote(character)) {
-      let string = '';
+      let characterArray: string[] = [];
 
       while (!isQuote(input[++cursor])) {
         if (input[cursor] === undefined) {
           throw new Error(`" ${ERROR_MESSAGE.MISSING_AT_POSITION} ${cursor - 1}`);
         }
-        string += input[cursor];
+        characterArray.push(input[cursor]);
       }
 
       tokens.push({
         type: TOKEN_TYPE.STRING,
-        value: string
+        value: characterArray.join('')
       })
 
       cursor++;
