@@ -2,7 +2,7 @@ import { isWhiteSpace, isNumber, isLetter, isQuote, isOpeningParenthesis, isClos
 import { ERROR_MESSAGE, TOKEN_TYPE } from './constants';
 import { Token } from './types';
 
-const isCorrectlyParenthesized = (input: string): void => {
+const checkIfCorrectlyParenthesized = (input: string): void => {
   const length = input.length;
 
   if (length > 0) {
@@ -44,7 +44,7 @@ export const tokenize = (input: string): Token[] => {
   const tokens: Token[] = [];
   let cursor = 0;
 
-  isCorrectlyParenthesized(input);
+  checkIfCorrectlyParenthesized(input);
 
   while (cursor < input.length) {
     const character = input[cursor];
