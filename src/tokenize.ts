@@ -1,15 +1,20 @@
-import { isParenthesis, isWhiteSpace, isNumber, isLetter, isQuote, isOpeningParenthesis, isClosingParenthesis } from './identify';
+import { isWhiteSpace, isNumber, isLetter, isQuote, isOpeningParenthesis, isClosingParenthesis } from './identify';
 import { ERROR_MESSAGE, TOKEN_TYPE } from './constants';
 import { Token } from './types';
 
 
 export const tokenize = (input: string): Token[] => {
+  input = input.trim();
   const tokens: Token[] = [];
   const parentheses : string[] = [];
   let cursor = 0;
 
   while (cursor < input.length) {
     const character = input[cursor];
+
+    if (cursor === 0 && !isOpeningParenthesis(character)) {
+      throw new Error(`( ${ERROR_MESSAGE.MISSING_AT_POSITION} 0`);
+    }
 
     if (isNumber(character)) {
       let number = character;
