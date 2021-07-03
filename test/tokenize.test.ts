@@ -125,6 +125,13 @@ describe(tokenize, () => {
     expect(() => tokenize(input)).toThrow(error);
   })
 
+  it('should throw an error for missing ) at end', () => {
+    const input = '()"aaa"';
+    const error = `) ${ERROR_MESSAGE.MISSING_AT_POSITION} ${input.length - 1}`;
+
+    expect(() => tokenize(input)).toThrow(error);
+  })
+
   it('should throw an error for invalid character', () => {
     const input = '($)';
     const error = `$ ${ERROR_MESSAGE.IS_NOT_VALID}`;
