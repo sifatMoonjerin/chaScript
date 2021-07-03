@@ -118,13 +118,11 @@ describe(tokenize, () => {
     expect(() => tokenize(input2)).toThrow(error);
   })
 
-  it('should throw an error for missing )', () => {
-    const input1 = '(aaa';
-    const input2 = '(222';
-    const error = ERROR_MESSAGE.INVALID_SYNTAX;
+  it('should throw an error for missing ( at start', () => {
+    const input = 'a(aa)';
+    const error = `( ${ERROR_MESSAGE.MISSING_AT_POSITION} 0`;
 
-    expect(() => tokenize(input1)).toThrow(error);
-    expect(() => tokenize(input2)).toThrow(error);
+    expect(() => tokenize(input)).toThrow(error);
   })
 
   it('should throw an error for invalid character', () => {
