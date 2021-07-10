@@ -1,6 +1,6 @@
+import { Token } from './../src/types';
 import { tokenize } from './../src/tokenize';
 import { ERROR_MESSAGE, TOKEN_TYPE } from './../src/constants';
-import { Token } from './../src/types';
 
 
 describe(tokenize, () => {

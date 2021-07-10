@@ -1,6 +1,6 @@
-import { isWhiteSpace, isNumber, isLetter, isQuote, isOpeningParenthesis, isClosingParenthesis } from './identify';
-import { ERROR_MESSAGE, TOKEN_TYPE } from './constants';
 import { Token } from './types';
+import { ERROR_MESSAGE, TOKEN_TYPE } from './constants';
+import { isWhiteSpace, isNumber, isLetter, isQuote, isOpeningParenthesis, isClosingParenthesis } from './identify';
 
 const checkIfCorrectlyParenthesized = (input: string): void => {
   const length = input.length;
@@ -131,7 +131,7 @@ export const tokenize = (input: string): Token[] => {
       continue;
     }
 
-    throw new Error(`${character} ${ERROR_MESSAGE.IS_NOT_VALID}`)
+    throw new Error(`${character} ${ERROR_MESSAGE.IS_NOT_VALID}`);
   }
 
   return tokens;

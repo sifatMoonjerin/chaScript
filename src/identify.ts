@@ -21,16 +21,3 @@ export const isParenthesis = (character: string): boolean => {
 }
 
 export const isQuote = (character: string): boolean => character === '"';
-
-const identify = {
-  isLetter,
-  isNumber,
-  isOperator,
-  isWhiteSpace,
-  isOpeningParenthesis,
-  isClosingParenthesis,
-  isParenthesis,
-  isQuote
-}
-
-export default identify;

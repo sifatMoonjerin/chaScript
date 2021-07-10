@@ -5,6 +5,12 @@ export const TOKEN_TYPE = {
   STRING: 'String'
 }
 
+export const AST_TOKEN_TYPE = {
+  NUMBER: 'NumericLiteral',
+  STRING: 'StringLiteral',
+  CALL_EXPRESSION: 'CallExpression'
+}
+
 export const ERROR_MESSAGE = {
   INVALID_SYNTAX: 'Invalid syntax',
   IS_NOT_VALID: 'is not valid',
