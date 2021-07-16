@@ -26,6 +26,13 @@ export const parse = (tokens: Token[]): AST => {
     } 
     const token: Token = popTop(tokens);
 
+    if (token.type === TOKEN_TYPE.KEYWORD) {
+      expression.arguments.push({
+        type: AST_TOKEN_TYPE.IDENTIFIER,
+        value: token.value
+      })
+    }
+
     if (token.type === TOKEN_TYPE.STRING) {
       expression.arguments.push({
         type: AST_TOKEN_TYPE.STRING,

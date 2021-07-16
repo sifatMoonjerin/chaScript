@@ -8,6 +8,7 @@ export const TOKEN_TYPE = {
 export const AST_TOKEN_TYPE = {
   NUMBER: 'NumericLiteral',
   STRING: 'StringLiteral',
+  IDENTIFIER: 'Identifier',
   CALL_EXPRESSION: 'CallExpression'
 }
 
