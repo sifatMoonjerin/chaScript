@@ -1,0 +1,25 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.isQuote = exports.isParenthesis = exports.isClosingParenthesis = exports.isOpeningParenthesis = exports.isWhiteSpace = exports.isOperator = exports.isNumber = exports.isLetter = void 0;
+var LETTER = /[a-zA-Z]/;
+var NUMBER = /^[0-9]+$/;
+var OPERATOR = ['+', '-', '*', '/', '%'];
+var WHITESPACE = /\s+/;
+var isLetter = function (character) { return !!character && LETTER.test(character); };
+exports.isLetter = isLetter;
+var isNumber = function (character) { return !!character && NUMBER.test(character); };
+exports.isNumber = isNumber;
+var isOperator = function (character) { return !!character && OPERATOR.includes(character); };
+exports.isOperator = isOperator;
+var isWhiteSpace = function (character) { return WHITESPACE.test(character); };
+exports.isWhiteSpace = isWhiteSpace;
+var isOpeningParenthesis = function (character) { return !!character && character === '('; };
+exports.isOpeningParenthesis = isOpeningParenthesis;
+var isClosingParenthesis = function (character) { return !!character && character === ')'; };
+exports.isClosingParenthesis = isClosingParenthesis;
+var isParenthesis = function (character) {
+    return exports.isOpeningParenthesis(character) || exports.isClosingParenthesis(character);
+};
+exports.isParenthesis = isParenthesis;
+var isQuote = function (character) { return character === '"'; };
+exports.isQuote = isQuote;
