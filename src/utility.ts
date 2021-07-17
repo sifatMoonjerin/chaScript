@@ -1,3 +1,4 @@
+import { parse } from './parse';
 import { Token } from './types';
 import { ERROR_MESSAGE } from './constants';
 
@@ -22,4 +23,8 @@ export const popTop = (array: Token[]): Token => {
 
   return token;
 }
+
+export const pipe = (...funcs: any[]) => (value: any) => {
+  return funcs.reduce((value, func) => func(value), value)
+} 
 
