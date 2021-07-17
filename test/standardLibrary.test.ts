@@ -1,6 +1,6 @@
 import { environment } from './../src/standardLibrary';
 import { ERROR_MESSAGE } from './../src/constants';
-import { DisplayStatement } from '../src/types';
+import { ValueType } from '../src/types';
 
 describe('Standard Library Test Suite', () => {
   it(`environment.add function should be able to return sum of number arguments`, () => {
@@ -14,7 +14,7 @@ describe('Standard Library Test Suite', () => {
     const fn = environment.add;
     const error = `add ${ERROR_MESSAGE.ONLY_NUMBER_ARGUMENTS}`;
     
-    expect(() => fn(1, 2, '3' as any, 4, 5)).toThrowError(error);
+    expect(() => fn(1, 2, '3', 4, 5)).toThrowError(error);
   })
 
   it(`environment.subtract function should be able to return sum of number arguments`, () => {
@@ -28,7 +28,7 @@ describe('Standard Library Test Suite', () => {
     const fn = environment.subtract;
     const error = `subtract ${ERROR_MESSAGE.ONLY_NUMBER_ARGUMENTS}`;
     
-    expect(() => fn(1, 2, '3' as any, 4, 5)).toThrowError(error);
+    expect(() => fn(1, 2, '3', 4, 5)).toThrowError(error);
   })
 
   it(`environment.multiply function should be able to return sum of number arguments`, () => {
@@ -42,7 +42,7 @@ describe('Standard Library Test Suite', () => {
     const fn = environment.multiply;
     const error = `multiply ${ERROR_MESSAGE.ONLY_NUMBER_ARGUMENTS}`;
     
-    expect(() => fn(1, 2, '3' as any, 4, 5)).toThrowError(error);
+    expect(() => fn(1, 2, '3', 4, 5)).toThrowError(error);
   })
 
   it(`environment.divide function should be able to return sum of number arguments`, () => {
@@ -56,7 +56,7 @@ describe('Standard Library Test Suite', () => {
     const fn = environment.divide;
     const error = `divide ${ERROR_MESSAGE.ONLY_NUMBER_ARGUMENTS}`;
     
-    expect(() => fn(200, '40' as any, 2)).toThrowError(error);
+    expect(() => fn(200, '40', 2)).toThrowError(error);
   })
 
   it(`environment.remainder function should be able to return sum of number arguments`, () => {
@@ -70,12 +70,12 @@ describe('Standard Library Test Suite', () => {
     const fn = environment.remainder;
     const error = `remainder ${ERROR_MESSAGE.ONLY_NUMBER_ARGUMENTS}`;
     
-    expect(() => fn(200, '45' as any, 6)).toThrowError(error);
+    expect(() => fn(200, '45', 6)).toThrowError(error);
   })
 
   it(`environment.display function should log its argument`, () => {
     console.log = jest.fn();
-    const statement: DisplayStatement = 'hello chaScript!';
+    const statement: ValueType = 'hello chaScript!';
     environment.display(statement);
 
     expect(console.log).toHaveBeenCalledWith(statement);

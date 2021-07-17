@@ -1,14 +1,13 @@
 import { ERROR_MESSAGE } from './constants';
-import { ReduceWrapperCallBack, ReduceWrapperReturnValue } from './types';
-
-const hasOnlyNumbersAsArguments = (args: number[]): boolean => args.every(arg => typeof arg === 'number');
+import { ReduceWrapperCallBack, ReduceWrapperReturnValue, ValueType } from './types';
 
 export const reduceWrapper = (fn: ReduceWrapperCallBack, fnName: string): ReduceWrapperReturnValue =>  {
-  return (...args: number[]): number => {
-    if (!hasOnlyNumbersAsArguments(args)) {
+  return (...args: ValueType[]): number => {
+    const numArgs = args.map(arg => {
+      if (typeof arg === 'number') return arg;
       throw new TypeError(`${fnName} ${ERROR_MESSAGE.ONLY_NUMBER_ARGUMENTS}`);
-    }
-
-    return args.reduce(fn);
+    })
+    
+    return numArgs.reduce(fn);
   }
 }
