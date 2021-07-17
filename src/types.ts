@@ -8,3 +8,9 @@ export type AST = {
   name: string;
   arguments: (Token | AST) [];
 }
+
+export type DisplayStatement = string | number | boolean;
+
+export type ReduceWrapperCallBack = (a: number, b: number) => number;
+
+export type ReduceWrapperReturnValue = (...args: number[]) => number;

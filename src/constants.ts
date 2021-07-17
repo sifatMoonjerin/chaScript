@@ -16,5 +16,7 @@ export const ERROR_MESSAGE = {
   INVALID_SYNTAX: 'Invalid syntax',
   IS_NOT_VALID: 'is not valid',
   MISSING_AT_POSITION: 'missing at position',
-  UNBALANCED_PARENTHESES: 'unbalanced parentheses'
+  UNBALANCED_PARENTHESES: 'unbalanced parentheses',
+  ONLY_NUMBER_ARGUMENTS: 'only expects numbers as arguments!',
+  UNEXPECTED_ARGUMENTS_PRINT: 'Expected 1 argument for print function. Received: '
 }
