@@ -2,6 +2,32 @@ import { ValueType, Environment } from './types';
 import { ERROR_MESSAGE } from './constants';
 import { reduceWrapper, numberFilter, stringFilter, checkValidNumberOfArguments } from './standardLibraryHelper';
 
+//#region General operations
+
+const main = (...args: ValueType[]) => undefined;
+
+const display = (...statement: ValueType[]): ValueType => {
+  checkValidNumberOfArguments(statement, 1);
+  console.log(statement[0]);
+  return;
+}
+
+const toNumber = (...args: ValueType[]): number => {
+  checkValidNumberOfArguments(args, 1);
+  const convertedValue = Number(args[0]);
+
+  if (isNaN(convertedValue)) throw new TypeError(`${args[0]} ${ERROR_MESSAGE.IS_NOT_VALID}`);
+
+  return convertedValue;
+}
+
+const toString = (...args: ValueType[]): string => {
+  checkValidNumberOfArguments(args, 1);
+  return "" + args[0];
+}
+
+//#endregion
+
 //#region Math operations
 
 const add = reduceWrapper((a: number, b: number): number => a + b, 'add');
@@ -26,30 +52,6 @@ const concat = (...args: ValueType[]): string => stringFilter(args, 'concat').jo
 
 //#endregion
 
-//#region General operations
-
-const display = (...statement: ValueType[]): ValueType => {
-  checkValidNumberOfArguments(statement, 1);
-  console.log(statement[0]);
-  return;
-}
-
-const toNumber = (...args: ValueType[]): number => {
-  checkValidNumberOfArguments(args, 1);
-  const convertedValue = Number(args[0]);
-
-  if (isNaN(convertedValue)) throw new TypeError(`${args[0]} ${ERROR_MESSAGE.IS_NOT_VALID}`);
-
-  return convertedValue;
-}
-
-const toString = (...args: ValueType[]): string => {
-  checkValidNumberOfArguments(args, 1);
-  return "" + args[0];
-}
-
-//#endregion
-
 //#region Identifiers
 
 const PI = Math.PI;
@@ -60,8 +62,11 @@ const FALSE = false;
 
 //#endregion
 
-
 export const environment: Environment = {
+  main,
+  display,
+  toNumber,
+  toString,
   add,
   subtract,
   multiply,
@@ -70,9 +75,6 @@ export const environment: Environment = {
   max,
   min,
   concat,
-  display,
-  toNumber,
-  toString,
   PI,
   TRUE,
   FALSE

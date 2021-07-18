@@ -1,6 +1,6 @@
 import { Token, AST } from './types';
 import { popTop, peekTop } from './utility';
-import { TOKEN_TYPE, AST_TOKEN_TYPE, ERROR_MESSAGE } from './constants';
+import { TOKEN_TYPE, AST_TOKEN_TYPE, ERROR_MESSAGE, SET } from './constants';
 import { isOpeningParenthesis, isClosingParenthesis,  } from './identify';
 
 
@@ -14,7 +14,7 @@ export const parse = (tokens: Token[]): AST => {
   }
 
   const expression: AST = {
-    type: AST_TOKEN_TYPE.CALL_EXPRESSION,
+    type: secondToken.value.toString() === SET ? AST_TOKEN_TYPE.VARIABLE_DECLARATION : AST_TOKEN_TYPE.CALL_EXPRESSION,
     name: secondToken.value.toString(),
     arguments: []
   };

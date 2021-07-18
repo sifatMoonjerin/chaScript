@@ -18,6 +18,10 @@ export type NumberOperationReturnValue = (...args: ValueType[]) => number;
 export type StringOperationReturnValue = (...args: ValueType[]) => string;
 
 export type EnvironmentMethods = {
+  main: (...statement: ValueType[]) => undefined;
+  display: (...statement: ValueType[]) => ValueType;
+  toNumber: NumberOperationReturnValue;
+  toString: StringOperationReturnValue;
   add: NumberOperationReturnValue;
   subtract: NumberOperationReturnValue;
   multiply: NumberOperationReturnValue;
@@ -26,9 +30,6 @@ export type EnvironmentMethods = {
   max: NumberOperationReturnValue;
   min: NumberOperationReturnValue;
   concat: StringOperationReturnValue;
-  display: (...statement: ValueType[]) => ValueType;
-  toNumber: NumberOperationReturnValue;
-  toString: StringOperationReturnValue;
 }
 
 export type EnvironmentConstants = {

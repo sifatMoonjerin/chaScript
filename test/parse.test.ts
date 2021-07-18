@@ -58,6 +58,49 @@ describe(parse, () => {
     expect(parse(tokens)).toEqual(ast);
   })
 
+  it (`should return an AST for variable declaration`, () => {
+    const tokens: Token[] = [
+      { type: TOKEN_TYPE.PARENTHESIS , value: '(' },
+      { type: TOKEN_TYPE.KEYWORD, value: 'main' },
+      { type: TOKEN_TYPE.PARENTHESIS , value: '(' },
+      { type: TOKEN_TYPE.KEYWORD, value: 'set' },
+      { type: TOKEN_TYPE.KEYWORD, value: 'x' },
+      { type: TOKEN_TYPE.NUMBER, value: 2 },
+      { type: TOKEN_TYPE.PARENTHESIS, value: ')' },
+      { type: TOKEN_TYPE.PARENTHESIS , value: '(' },
+      { type: TOKEN_TYPE.KEYWORD, value: 'add' },
+      { type: TOKEN_TYPE.KEYWORD, value: 'x' },
+      { type: TOKEN_TYPE.NUMBER, value: 3 },
+      { type: TOKEN_TYPE.PARENTHESIS, value: ')' },
+      { type: TOKEN_TYPE.PARENTHESIS, value: ')' }
+    ];
+
+    const ast: AST = {
+      type: AST_TOKEN_TYPE.CALL_EXPRESSION,
+      name: 'main',
+      arguments: [
+        {
+          type: AST_TOKEN_TYPE.VARIABLE_DECLARATION,
+          name: 'set',
+          arguments: [
+            { type: AST_TOKEN_TYPE.IDENTIFIER, value: 'x' },
+            { type: AST_TOKEN_TYPE.NUMBER, value: 2 }
+          ],
+        },
+        {
+          type: AST_TOKEN_TYPE.CALL_EXPRESSION,
+          name: 'add',
+          arguments: [
+            { type: AST_TOKEN_TYPE.IDENTIFIER, value: 'x' },
+            { type: AST_TOKEN_TYPE.NUMBER, value: 3 }
+          ],
+        }
+      ]
+    };
+
+    expect(parse(tokens)).toEqual(ast);
+  })
+
   it (`should return an AST with StringLiteral`, () => {
     const message = 'hello from chaScript!';
 
