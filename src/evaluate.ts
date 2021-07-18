@@ -1,19 +1,35 @@
 import { AST, Token, ValueType, EnvironmentMethods, EnvironmentConstants } from './types';
-import { AST_TOKEN_TYPE, ERROR_MESSAGE } from './constants';
+import { AST_TOKEN_TYPE, ERROR_MESSAGE, IF } from './constants';
 import { environment } from './standardLibrary';
 
 const variables: {[k: string]: ValueType} = {};
 
-const callFunctionExpression = (node: AST): ValueType => {
-  const name = node.name as keyof EnvironmentMethods;
-  const fn = environment[name];
+const specialFunctionArgumentCheck = (args: (AST | Token)[]) => {
+  if (args.length !== 2) {
+    throw new RangeError(`${ERROR_MESSAGE.UNEXPECTED_ARGUMENTS_PRINT}`);
+  }
+} 
 
-  if (typeof fn === 'function') {
-    const args = node.arguments.map(arg => evaluate(arg));
-    return fn(...args);
-  } 
-    
+const callFunctionExpression = (node: AST): ValueType => {
+  const name = node.name;
+
+  if (environment.hasOwnProperty(name)) {
+    const fn = environment[name as keyof EnvironmentMethods];
+
+    if (typeof fn === 'function') {
+      const args = node.arguments.map(arg => evaluate(arg));
+      return fn(...args);
+    }
+  }
+
+  if (name === IF) {
+    const args = node.arguments;
+    specialFunctionArgumentCheck(args);
+    return evaluate(args[0]) ? evaluate(args[1]) : undefined;
+  }
+
   throw new ReferenceError(`${ERROR_MESSAGE.INVALID_EXPRESSION} ${name}`);
+
 }
 
 const defineVariable = (node: AST): undefined => {

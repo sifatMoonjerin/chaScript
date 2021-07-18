@@ -4,9 +4,9 @@ import { reduceWrapper, numberFilter, stringFilter, checkValidNumberOfArguments 
 
 //#region General operations
 
-const main = (...args: ValueType[]) => undefined;
+const _void = (...args: ValueType[]) => undefined;
 
-const display = (...statement: ValueType[]): ValueType => {
+const display = (...statement: ValueType[]): undefined => {
   checkValidNumberOfArguments(statement, 1);
   console.log(statement[0]);
   return;
@@ -63,7 +63,7 @@ const FALSE = false;
 //#endregion
 
 export const environment: Environment = {
-  main,
+  void: _void,
   display,
   toNumber,
   toString,

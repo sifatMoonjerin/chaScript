@@ -17,9 +17,11 @@ export type NumberOperationReturnValue = (...args: ValueType[]) => number;
 
 export type StringOperationReturnValue = (...args: ValueType[]) => string;
 
+export type VoidReturn = (...statement: ValueType[]) => undefined;
+
 export type EnvironmentMethods = {
-  main: (...statement: ValueType[]) => undefined;
-  display: (...statement: ValueType[]) => ValueType;
+  void: VoidReturn;
+  display: VoidReturn;
   toNumber: NumberOperationReturnValue;
   toString: StringOperationReturnValue;
   add: NumberOperationReturnValue;

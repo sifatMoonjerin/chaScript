@@ -61,7 +61,7 @@ describe(parse, () => {
   it (`should return an AST for variable declaration`, () => {
     const tokens: Token[] = [
       { type: TOKEN_TYPE.PARENTHESIS , value: '(' },
-      { type: TOKEN_TYPE.KEYWORD, value: 'main' },
+      { type: TOKEN_TYPE.KEYWORD, value: 'void' },
       { type: TOKEN_TYPE.PARENTHESIS , value: '(' },
       { type: TOKEN_TYPE.KEYWORD, value: 'set' },
       { type: TOKEN_TYPE.KEYWORD, value: 'x' },
@@ -77,7 +77,7 @@ describe(parse, () => {
 
     const ast: AST = {
       type: AST_TOKEN_TYPE.CALL_EXPRESSION,
-      name: 'main',
+      name: 'void',
       arguments: [
         {
           type: AST_TOKEN_TYPE.VARIABLE_DECLARATION,

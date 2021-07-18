@@ -1,4 +1,5 @@
 export const SET = 'set';
+export const IF = 'if';
 
 export const TOKEN_TYPE = {
   PARENTHESIS: 'Parenthesis',

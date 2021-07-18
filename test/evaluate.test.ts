@@ -104,7 +104,7 @@ describe(evaluate, () => {
   it('should be able to evaluate a variable declaration', () => {
     const ast: AST = {
       type: AST_TOKEN_TYPE.CALL_EXPRESSION,
-      name: 'main',
+      name: 'void',
       arguments: [
         {
           type: AST_TOKEN_TYPE.VARIABLE_DECLARATION,
@@ -128,6 +128,36 @@ describe(evaluate, () => {
     evaluate(ast);
 
     expect(console.log).toHaveBeenCalledWith(2);
+  })
+
+  it('should be able to evaluate a if statement', () => {
+    const ast1: AST = {
+      type: AST_TOKEN_TYPE.CALL_EXPRESSION,
+      name: 'if',
+      arguments: [
+        {
+          type: AST_TOKEN_TYPE.IDENTIFIER,
+          value: 'TRUE',
+        },
+        { type: AST_TOKEN_TYPE.NUMBER, value: 5 }
+      ]
+    };
+
+    expect(evaluate(ast1)).toBe(5);
+
+    const ast2: AST = {
+      type: AST_TOKEN_TYPE.CALL_EXPRESSION,
+      name: 'if',
+      arguments: [
+        {
+          type: AST_TOKEN_TYPE.IDENTIFIER,
+          value: 'FALSE',
+        },
+        { type: AST_TOKEN_TYPE.NUMBER, value: 5 }
+      ]
+    };
+
+    expect(evaluate(ast2)).toBe(undefined);
   })
 
   it('should be able to log a value', () => {
