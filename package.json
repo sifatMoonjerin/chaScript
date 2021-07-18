@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "A fun programming language",
   "main": "dist/index.js",
+  "bin": {
+    "chaScript": "./bin/chaScript.js"
+  },
   "scripts": {
     "start": "node dist/repl.js",
     "dev": "./node_modules/.bin/ts-node src/repl.ts",
