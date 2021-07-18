@@ -22,7 +22,7 @@ if (command.toLowerCase() === 'run') {
       try {
         parseAndEvaluate(file);
       } catch (err) {
-        console.log(`${chalk.red(err.name)}: ${err.message}`);
+        console.log(`${chalk.red(err.name + ':')} ${err.message}`);
       }
     });
   } else {

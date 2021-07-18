@@ -1,0 +1,5 @@
+(
+  display (
+    multiply (add 3 4 5) (subtract 5 3) (divide 8 4) (remainder 5 3)
+  )
+)
