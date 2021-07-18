@@ -10,12 +10,12 @@ export const peekTop = (array: Token[]): Token => {
     return array[0];
   }
   
-  throw new Error(`${ERROR_MESSAGE.INVALID_SYNTAX}`);
+  throw new SyntaxError(`${ERROR_MESSAGE.INVALID_SYNTAX}`);
 }
 
 export const popTop = (array: Token[]): Token => {
   if (isEmptyArray(array)) {
-    throw new Error(`${ERROR_MESSAGE.INVALID_SYNTAX}`);  
+    throw new SyntaxError(`${ERROR_MESSAGE.INVALID_SYNTAX}`);  
   }
 
   const token = peekTop(array);
