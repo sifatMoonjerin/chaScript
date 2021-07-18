@@ -13,15 +13,22 @@ export type ValueType = string | number | boolean | undefined;
 
 export type ReduceWrapperCallBack = (a: number, b: number) => number;
 
-export type ReduceWrapperReturnValue = (...args: ValueType[]) => number;
+export type NumberOperationReturnValue = (...args: ValueType[]) => number;
+
+export type StringOperationReturnValue = (...args: ValueType[]) => string;
 
 export type EnvironmentMethods = {
-  add: ReduceWrapperReturnValue;
-  subtract: ReduceWrapperReturnValue;
-  multiply: ReduceWrapperReturnValue;
-  divide: ReduceWrapperReturnValue;
-  remainder: ReduceWrapperReturnValue;
+  add: NumberOperationReturnValue;
+  subtract: NumberOperationReturnValue;
+  multiply: NumberOperationReturnValue;
+  divide: NumberOperationReturnValue;
+  remainder: NumberOperationReturnValue;
+  max: NumberOperationReturnValue;
+  min: NumberOperationReturnValue;
+  concat: StringOperationReturnValue;
   display: (...statement: ValueType[]) => ValueType;
+  toNumber: NumberOperationReturnValue;
+  toString: StringOperationReturnValue;
 }
 
 export type EnvironmentConstants = {

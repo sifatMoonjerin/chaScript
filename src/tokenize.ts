@@ -57,7 +57,7 @@ export const tokenize = (input: string): Token[] => {
       }
 
       if (input[cursor] === undefined) {
-        throw new Error(`${ERROR_MESSAGE.INVALID_SYNTAX}`);
+        throw new SyntaxError(`${ERROR_MESSAGE.INVALID_SYNTAX}`);
       }
       
       tokens.push({
@@ -76,7 +76,7 @@ export const tokenize = (input: string): Token[] => {
       }
 
       if (input[cursor] === undefined) {
-        throw new Error(`${ERROR_MESSAGE.INVALID_SYNTAX}`);
+        throw new SyntaxError(`${ERROR_MESSAGE.INVALID_SYNTAX}`);
       }
 
       tokens.push({

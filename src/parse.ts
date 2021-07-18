@@ -10,7 +10,7 @@ export const parse = (tokens: Token[]): AST => {
   const hasInitialSyntaxError: boolean = !isOpeningParenthesis(firstToken.value.toString()) || secondToken.type !== TOKEN_TYPE.KEYWORD; 
 
   if (hasInitialSyntaxError) {
-    throw new Error(`${ERROR_MESSAGE.INVALID_SYNTAX}`);
+    throw new SyntaxError(`${ERROR_MESSAGE.INVALID_SYNTAX}`);
   }
 
   const expression: AST = {

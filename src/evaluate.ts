@@ -11,7 +11,7 @@ const callFunctionExpression = (node: AST): ValueType => {
     return fn(...args);
   } 
     
-  throw new Error(`${ERROR_MESSAGE.INVALID_EXPRESSION} ${name}`);
+  throw new ReferenceError(`${ERROR_MESSAGE.INVALID_EXPRESSION} ${name}`);
 }
 
 const getIdentifierValue = (token: Token): ValueType => {
@@ -20,7 +20,7 @@ const getIdentifierValue = (token: Token): ValueType => {
   if (environment.hasOwnProperty(key)) {
     return environment[key] as ValueType;
   } else {
-    throw new Error(`${ERROR_MESSAGE.INVALID_IDENTIFIER} ${key}`);
+    throw new ReferenceError(`${ERROR_MESSAGE.INVALID_IDENTIFIER} ${key}`);
   }
 }
 
@@ -30,6 +30,6 @@ export const evaluate = (node: AST | Token): ValueType => {
   } else if ('value' in node) {
     return node.type === AST_TOKEN_TYPE.IDENTIFIER ? getIdentifierValue(node) : node.value;
   } else {
-    throw new Error(`${ERROR_MESSAGE.INVALID_SYNTAX}`);
+    throw new SyntaxError(`${ERROR_MESSAGE.INVALID_SYNTAX}`);
   }
 }
