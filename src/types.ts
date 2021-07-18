@@ -17,6 +17,8 @@ export type NumberOperationReturnValue = (...args: ValueType[]) => number;
 
 export type StringOperationReturnValue = (...args: ValueType[]) => string;
 
+export type BooleanOperationReturnValue = (...args: ValueType[]) => boolean;
+
 export type VoidReturn = (...statement: ValueType[]) => undefined;
 
 export type EnvironmentMethods = {
@@ -24,6 +26,12 @@ export type EnvironmentMethods = {
   display: VoidReturn;
   toNumber: NumberOperationReturnValue;
   toString: StringOperationReturnValue;
+  eq: BooleanOperationReturnValue;
+  neq: BooleanOperationReturnValue;
+  gt: BooleanOperationReturnValue;
+  gte: BooleanOperationReturnValue;
+  lt: BooleanOperationReturnValue;
+  lte: BooleanOperationReturnValue;
   add: NumberOperationReturnValue;
   subtract: NumberOperationReturnValue;
   multiply: NumberOperationReturnValue;

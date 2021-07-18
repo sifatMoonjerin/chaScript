@@ -1,5 +1,6 @@
 export const SET = 'set';
 export const IF = 'if';
+export const LOOP = 'loop';
 
 export const TOKEN_TYPE = {
   PARENTHESIS: 'Parenthesis',
@@ -26,5 +27,5 @@ export const ERROR_MESSAGE = {
   UNBALANCED_PARENTHESES: 'unbalanced parentheses',
   ONLY_NUMBER_ARGUMENTS: 'only expects numbers as arguments!',
   ONLY_STRING_ARGUMENTS: 'only expects strings as arguments!',
-  UNEXPECTED_ARGUMENTS_PRINT: 'Expected 1 argument for print function. Received:'
+  UNEXPECTED_ARGUMENTS: 'Expected number of arguments. Received:'
 }

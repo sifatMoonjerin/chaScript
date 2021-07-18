@@ -124,8 +124,8 @@ describe('Standard Library Test Suite', () => {
   })
 
   it(`environment.display function should throw error if the number of arguments is not one`, () => {
-    expect(() => environment.display(1, 2, 3)).toThrowError(`${ERROR_MESSAGE.UNEXPECTED_ARGUMENTS_PRINT} 3`);
-    expect(() => environment.display()).toThrowError(`${ERROR_MESSAGE.UNEXPECTED_ARGUMENTS_PRINT} 0`);
+    expect(() => environment.display(1, 2, 3)).toThrowError(`${ERROR_MESSAGE.UNEXPECTED_ARGUMENTS} 3`);
+    expect(() => environment.display()).toThrowError(`${ERROR_MESSAGE.UNEXPECTED_ARGUMENTS} 0`);
   })
 
   it(`environment.toNumber function should convert a single input to a number`, () => {
@@ -139,8 +139,8 @@ describe('Standard Library Test Suite', () => {
   })
 
   it(`environment.toNumber function should throw error if the number of arguments is not one`, () => {
-    expect(() => environment.toNumber('1', '2', '3')).toThrowError(`${ERROR_MESSAGE.UNEXPECTED_ARGUMENTS_PRINT} 3`);
-    expect(() => environment.toNumber()).toThrowError(`${ERROR_MESSAGE.UNEXPECTED_ARGUMENTS_PRINT} 0`);
+    expect(() => environment.toNumber('1', '2', '3')).toThrowError(`${ERROR_MESSAGE.UNEXPECTED_ARGUMENTS} 3`);
+    expect(() => environment.toNumber()).toThrowError(`${ERROR_MESSAGE.UNEXPECTED_ARGUMENTS} 0`);
   })
 
   it(`environment.toString function should convert a single input to a string`, () => {
@@ -150,8 +150,8 @@ describe('Standard Library Test Suite', () => {
   })
 
   it(`environment.toString function should throw error if the number of arguments is not one`, () => {
-    expect(() => environment.toString(1, 2, 3)).toThrowError(`${ERROR_MESSAGE.UNEXPECTED_ARGUMENTS_PRINT} 3`);
-    expect(() => environment.toString()).toThrowError(`${ERROR_MESSAGE.UNEXPECTED_ARGUMENTS_PRINT} 0`);
+    expect(() => environment.toString(1, 2, 3)).toThrowError(`${ERROR_MESSAGE.UNEXPECTED_ARGUMENTS} 3`);
+    expect(() => environment.toString()).toThrowError(`${ERROR_MESSAGE.UNEXPECTED_ARGUMENTS} 0`);
   })
   
   it(`environment.PI should return Math.PI`, () => {

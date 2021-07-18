@@ -1,6 +1,6 @@
 import { ValueType, Environment } from './types';
 import { ERROR_MESSAGE } from './constants';
-import { reduceWrapper, numberFilter, stringFilter, checkValidNumberOfArguments } from './standardLibraryHelper';
+import { reduceWrapper, numberFilter, stringFilter, checkValidNumberOfArguments, numberAndBooleanFilter } from './standardLibraryHelper';
 
 //#region General operations
 
@@ -24,6 +24,42 @@ const toNumber = (...args: ValueType[]): number => {
 const toString = (...args: ValueType[]): string => {
   checkValidNumberOfArguments(args, 1);
   return "" + args[0];
+}
+
+const eq = (...args: ValueType[]): boolean => {
+  checkValidNumberOfArguments(args, 2);
+  const [num1, num2] = numberAndBooleanFilter(args, 'eq');
+  return num1 === num2;
+}
+
+const neq = (...args: ValueType[]): boolean => {
+  checkValidNumberOfArguments(args, 2);
+  const [num1, num2] = numberAndBooleanFilter(args, 'neq');
+  return num1 !== num2;
+}
+
+const gt = (...args: ValueType[]): boolean => {
+  checkValidNumberOfArguments(args, 2);
+  const [num1, num2] = numberFilter(args, 'gt');
+  return num1 > num2;
+}
+
+const gte = (...args: ValueType[]): boolean => {
+  checkValidNumberOfArguments(args, 2);
+  const [num1, num2] = numberFilter(args, 'gte');
+  return num1 >= num2;
+}
+
+const lt = (...args: ValueType[]): boolean => {
+  checkValidNumberOfArguments(args, 2);
+  const [num1, num2] = numberFilter(args, 'lt');
+  return num1 < num2;
+}
+
+const lte = (...args: ValueType[]): boolean => {
+  checkValidNumberOfArguments(args, 2);
+  const [num1, num2] = numberFilter(args, 'lte');
+  return num1 <= num2;
 }
 
 //#endregion
@@ -67,6 +103,12 @@ export const environment: Environment = {
   display,
   toNumber,
   toString,
+  eq,
+  neq,
+  gt,
+  gte,
+  lt,
+  lte,
   add,
   subtract,
   multiply,

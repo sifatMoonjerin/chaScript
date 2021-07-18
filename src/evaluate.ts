@@ -1,12 +1,12 @@
 import { AST, Token, ValueType, EnvironmentMethods, EnvironmentConstants } from './types';
-import { AST_TOKEN_TYPE, ERROR_MESSAGE, IF } from './constants';
+import { AST_TOKEN_TYPE, ERROR_MESSAGE, IF, LOOP } from './constants';
 import { environment } from './standardLibrary';
 
 const variables: {[k: string]: ValueType} = {};
 
 const specialFunctionArgumentCheck = (args: (AST | Token)[]) => {
   if (args.length !== 2) {
-    throw new RangeError(`${ERROR_MESSAGE.UNEXPECTED_ARGUMENTS_PRINT}`);
+    throw new RangeError(`${ERROR_MESSAGE.UNEXPECTED_ARGUMENTS} ${args.length}`);
   }
 } 
 
@@ -28,12 +28,24 @@ const callFunctionExpression = (node: AST): ValueType => {
     return evaluate(args[0]) ? evaluate(args[1]) : undefined;
   }
 
+  if (name === LOOP) {
+    const args = node.arguments;
+    specialFunctionArgumentCheck(args);
+    const [condition, block] = args;
+
+    while (evaluate(condition)) {
+      evaluate(block);
+    }
+
+    return;
+  }
+
   throw new ReferenceError(`${ERROR_MESSAGE.INVALID_EXPRESSION} ${name}`);
 
 }
 
 const defineVariable = (node: AST): undefined => {
-  if (node.arguments.length !== 2) throw new RangeError(`${ERROR_MESSAGE.UNEXPECTED_ARGUMENTS_PRINT} 2`);
+  if (node.arguments.length !== 2) throw new RangeError(`${ERROR_MESSAGE.UNEXPECTED_ARGUMENTS} ${node.arguments.length}`);
   
   const variableName = node.arguments[0];
   const variableValue = evaluate(node.arguments[1]);
