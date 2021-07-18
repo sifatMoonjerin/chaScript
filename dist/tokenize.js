@@ -44,7 +44,7 @@ var tokenize = function (input) {
                 numberArray.push(input[cursor]);
             }
             if (input[cursor] === undefined) {
-                throw new Error("" + constants_1.ERROR_MESSAGE.INVALID_SYNTAX);
+                throw new SyntaxError("" + constants_1.ERROR_MESSAGE.INVALID_SYNTAX);
             }
             tokens.push({
                 type: constants_1.TOKEN_TYPE.NUMBER,
@@ -58,7 +58,7 @@ var tokenize = function (input) {
                 characterArray.push(input[cursor]);
             }
             if (input[cursor] === undefined) {
-                throw new Error("" + constants_1.ERROR_MESSAGE.INVALID_SYNTAX);
+                throw new SyntaxError("" + constants_1.ERROR_MESSAGE.INVALID_SYNTAX);
             }
             tokens.push({
                 type: constants_1.TOKEN_TYPE.KEYWORD,

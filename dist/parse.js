@@ -9,7 +9,7 @@ var parse = function (tokens) {
     var secondToken = utility_1.popTop(tokens);
     var hasInitialSyntaxError = !identify_1.isOpeningParenthesis(firstToken.value.toString()) || secondToken.type !== constants_1.TOKEN_TYPE.KEYWORD;
     if (hasInitialSyntaxError) {
-        throw new Error("" + constants_1.ERROR_MESSAGE.INVALID_SYNTAX);
+        throw new SyntaxError("" + constants_1.ERROR_MESSAGE.INVALID_SYNTAX);
     }
     var expression = {
         type: constants_1.AST_TOKEN_TYPE.CALL_EXPRESSION,

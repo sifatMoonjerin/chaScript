@@ -7,12 +7,12 @@ var peekTop = function (array) {
     if (!isEmptyArray(array)) {
         return array[0];
     }
-    throw new Error("" + constants_1.ERROR_MESSAGE.INVALID_SYNTAX);
+    throw new SyntaxError("" + constants_1.ERROR_MESSAGE.INVALID_SYNTAX);
 };
 exports.peekTop = peekTop;
 var popTop = function (array) {
     if (isEmptyArray(array)) {
-        throw new Error("" + constants_1.ERROR_MESSAGE.INVALID_SYNTAX);
+        throw new SyntaxError("" + constants_1.ERROR_MESSAGE.INVALID_SYNTAX);
     }
     var token = exports.peekTop(array);
     array.shift();
