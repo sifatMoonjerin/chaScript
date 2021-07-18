@@ -10,7 +10,7 @@ var callFunctionExpression = function (node) {
         var args = node.arguments.map(function (arg) { return exports.evaluate(arg); });
         return fn.apply(void 0, args);
     }
-    throw new Error(constants_1.ERROR_MESSAGE.INVALID_EXPRESSION + " " + name);
+    throw new ReferenceError(constants_1.ERROR_MESSAGE.INVALID_EXPRESSION + " " + name);
 };
 var getIdentifierValue = function (token) {
     var key = token.value;
@@ -18,7 +18,7 @@ var getIdentifierValue = function (token) {
         return standardLibrary_1.environment[key];
     }
     else {
-        throw new Error(constants_1.ERROR_MESSAGE.INVALID_IDENTIFIER + " " + key);
+        throw new ReferenceError(constants_1.ERROR_MESSAGE.INVALID_IDENTIFIER + " " + key);
     }
 };
 var evaluate = function (node) {
@@ -29,7 +29,7 @@ var evaluate = function (node) {
         return node.type === constants_1.AST_TOKEN_TYPE.IDENTIFIER ? getIdentifierValue(node) : node.value;
     }
     else {
-        throw new Error("" + constants_1.ERROR_MESSAGE.INVALID_SYNTAX);
+        throw new SyntaxError("" + constants_1.ERROR_MESSAGE.INVALID_SYNTAX);
     }
 };
 exports.evaluate = evaluate;
