@@ -40,7 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.repl = void 0;
-var parseAndEvaluate_1 = require("./parseAndEvaluate");
+var parse_and_evaluate_1 = require("./parse-and-evaluate");
 var chalk_1 = __importDefault(require("chalk"));
 var prompt = require('inquirer').prompt;
 process.on('SIGINT', function () {
@@ -60,8 +60,7 @@ var repl = function () { return __awaiter(void 0, void 0, void 0, function () {
                 input = _a.sent();
                 COMMAND = input.COMMAND;
                 if (COMMAND.trim()) {
-                    process.stdout.write("   ");
-                    parseAndEvaluate_1.parseAndEvaluate(COMMAND);
+                    parse_and_evaluate_1.parseAndEvaluate(COMMAND);
                 }
                 return [3 /*break*/, 3];
             case 2:

@@ -1,6 +1,6 @@
 import { AST, Token, ValueType, EnvironmentMethods, EnvironmentConstants } from './types';
 import { AST_TOKEN_TYPE, ERROR_MESSAGE, IF, LOOP } from './constants';
-import { environment } from './standardLibrary';
+import { environment } from './standard-library';
 
 const variables: {[k: string]: ValueType} = {};
 

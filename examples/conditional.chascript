@@ -1,0 +1,19 @@
+(
+  void
+  ( set num 80 )
+  ( set remains 
+    ( remainder num 2 ) 
+  )
+  ( if
+    ( eq remains 0 )
+    ( display 
+      ( concat ( toString num ) " is even!" ) 
+    )
+  )
+  ( if
+    ( neq remains 0 )
+    ( display 
+      ( concat ( toString num ) " is odd!" ) 
+    )
+  )
+)
