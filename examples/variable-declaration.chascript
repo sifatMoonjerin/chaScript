@@ -1,0 +1,5 @@
+(
+  void
+  ( set name "chaScript" )
+  ( display ( concat "I love " name "!!") )
+)

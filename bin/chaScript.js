@@ -14,7 +14,7 @@ if (!command) {
 
 if (command.toLowerCase() === 'run') {
   const extension = args[0].split('.').pop();
-  if (extension === 'chaScript') {
+  if (extension === 'chascript') {
     fs.readFile(args[0], 'utf-8', (error, file) => {
       if (error) {
         console.log(`${chalk.red(error.name)}: ${error.message}`);

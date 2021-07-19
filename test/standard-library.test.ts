@@ -1,5 +1,5 @@
-import { environment } from './../src/standardLibrary';
-import { ERROR_MESSAGE } from './../src/constants';
+import { environment } from './../src/standard-library';
+import { ERROR_MESSAGE } from '../src/constants';
 import { ValueType } from '../src/types';
 
 describe('Standard Library Test Suite', () => {

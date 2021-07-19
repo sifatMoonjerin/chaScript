@@ -12,7 +12,7 @@ var parse = function (tokens) {
         throw new SyntaxError("" + constants_1.ERROR_MESSAGE.INVALID_SYNTAX);
     }
     var expression = {
-        type: constants_1.AST_TOKEN_TYPE.CALL_EXPRESSION,
+        type: secondToken.value.toString() === constants_1.SET ? constants_1.AST_TOKEN_TYPE.VARIABLE_DECLARATION : constants_1.AST_TOKEN_TYPE.CALL_EXPRESSION,
         name: secondToken.value.toString(),
         arguments: []
     };

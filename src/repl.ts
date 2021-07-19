@@ -1,4 +1,4 @@
-import { parseAndEvaluate } from './parseAndEvaluate';
+import { parseAndEvaluate } from './parse-and-evaluate';
 import chalk from "chalk";
 const { prompt } = require('inquirer');
 

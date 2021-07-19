@@ -1,6 +1,6 @@
 import { ValueType, Environment } from './types';
 import { ERROR_MESSAGE } from './constants';
-import { reduceWrapper, numberFilter, stringFilter, checkValidNumberOfArguments } from './standardLibraryHelper';
+import { reduceWrapper, numberFilter, stringFilter, checkValidNumberOfArguments } from './standard-library-helper';
 
 //#region General operations
 

@@ -1,0 +1,13 @@
+(
+  void
+  ( set count 0 )
+  ( set starString "*" )
+  ( loop
+    ( lt count 5 )
+    ( void
+      ( display starString )
+      ( set starString ( concat starString " *" ) )
+      ( set count ( add count 1 ) )
+    )
+  )
+)

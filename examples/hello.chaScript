@@ -1,3 +1,4 @@
 (
-  display "Hello from chaScript!"
+  void
+  ( display "Hello from chaScript!" )
 )

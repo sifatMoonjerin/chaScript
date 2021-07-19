@@ -31,7 +31,7 @@ var reduceWrapper = function (fn, fnName) {
 exports.reduceWrapper = reduceWrapper;
 var checkValidNumberOfArguments = function (args, expectedArgs) {
     if (args.length !== expectedArgs) {
-        throw new RangeError(constants_1.ERROR_MESSAGE.UNEXPECTED_ARGUMENTS_PRINT + " " + args.length);
+        throw new RangeError(constants_1.ERROR_MESSAGE.UNEXPECTED_ARGUMENTS + " " + args.length);
     }
 };
 exports.checkValidNumberOfArguments = checkValidNumberOfArguments;
