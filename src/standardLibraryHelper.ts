@@ -8,13 +8,6 @@ export const numberFilter = (numArgs: ValueType[], fnName: string): number[] => 
   })
 }
 
-export const numberAndBooleanFilter = (numArgs: ValueType[], fnName: string): (number | boolean)[] => {
-  return numArgs.map(arg => {
-    if (typeof arg === 'number' || typeof arg === 'boolean') return arg;
-    throw new TypeError(`${fnName} ${ERROR_MESSAGE.ONLY_NUMBER_ARGUMENTS}`);
-  })
-}
-
 export const stringFilter = (strArgs: ValueType[], fnName: string): string[] => {
   return strArgs.map(str => {
     if (typeof str === 'string') return str;

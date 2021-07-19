@@ -1,6 +1,6 @@
 import { ValueType, Environment } from './types';
 import { ERROR_MESSAGE } from './constants';
-import { reduceWrapper, numberFilter, stringFilter, checkValidNumberOfArguments, numberAndBooleanFilter } from './standardLibraryHelper';
+import { reduceWrapper, numberFilter, stringFilter, checkValidNumberOfArguments } from './standardLibraryHelper';
 
 //#region General operations
 
@@ -28,14 +28,12 @@ const toString = (...args: ValueType[]): string => {
 
 const eq = (...args: ValueType[]): boolean => {
   checkValidNumberOfArguments(args, 2);
-  const [num1, num2] = numberAndBooleanFilter(args, 'eq');
-  return num1 === num2;
+  return args[0] === args[1];
 }
 
 const neq = (...args: ValueType[]): boolean => {
   checkValidNumberOfArguments(args, 2);
-  const [num1, num2] = numberAndBooleanFilter(args, 'neq');
-  return num1 !== num2;
+  return args[0] !== args[1];
 }
 
 const gt = (...args: ValueType[]): boolean => {
