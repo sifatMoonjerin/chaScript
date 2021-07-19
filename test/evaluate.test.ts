@@ -101,6 +101,158 @@ describe(evaluate, () => {
     expect(output).toBe(7);
   })
 
+  it('should be able to evaluate a variable declaration', () => {
+    const ast: AST = {
+      type: AST_TOKEN_TYPE.CALL_EXPRESSION,
+      name: 'void',
+      arguments: [
+        {
+          type: AST_TOKEN_TYPE.VARIABLE_DECLARATION,
+          name: 'set',
+          arguments: [
+            { type: AST_TOKEN_TYPE.IDENTIFIER, value: 'x' },
+            { type: AST_TOKEN_TYPE.NUMBER, value: 2 }
+          ],
+        },
+        {
+          type: AST_TOKEN_TYPE.CALL_EXPRESSION,
+          name: 'display',
+          arguments: [
+            { type: AST_TOKEN_TYPE.IDENTIFIER, value: 'x' }
+          ],
+        }
+      ]
+    };
+
+    console.log = jest.fn();
+    evaluate(ast);
+
+    expect(console.log).toHaveBeenCalledWith(2);
+  })
+
+  it('should be able to evaluate a if statement', () => {
+    const ast1: AST = {
+      type: AST_TOKEN_TYPE.CALL_EXPRESSION,
+      name: 'if',
+      arguments: [
+        {
+          type: AST_TOKEN_TYPE.IDENTIFIER,
+          value: 'TRUE',
+        },
+        { type: AST_TOKEN_TYPE.NUMBER, value: 5 }
+      ]
+    };
+
+    expect(evaluate(ast1)).toBe(5);
+
+    const ast2: AST = {
+      type: AST_TOKEN_TYPE.CALL_EXPRESSION,
+      name: 'if',
+      arguments: [
+        {
+          type: AST_TOKEN_TYPE.IDENTIFIER,
+          value: 'FALSE',
+        },
+        { type: AST_TOKEN_TYPE.NUMBER, value: 5 }
+      ]
+    };
+
+    expect(evaluate(ast2)).toBe(undefined);
+  })
+
+  it ('should be able to execute a loop similar to while loop', () => {
+    const loopCount = 5;
+    let loopString = '*';
+
+    const ast: AST = {
+      type: AST_TOKEN_TYPE.CALL_EXPRESSION,
+      name: 'void',
+      arguments: [
+        {
+          type: AST_TOKEN_TYPE.VARIABLE_DECLARATION,
+          name: 'set',
+          arguments: [
+            { type: AST_TOKEN_TYPE.IDENTIFIER, value: 'x' },
+            { type: AST_TOKEN_TYPE.NUMBER, value: 0 }
+          ],
+        },
+        {
+          type: AST_TOKEN_TYPE.VARIABLE_DECLARATION,
+          name: 'set',
+          arguments: [
+            { type: AST_TOKEN_TYPE.IDENTIFIER, value: 'str' },
+            { type: AST_TOKEN_TYPE.STRING, value: loopString }
+          ],
+        },
+        {
+          type: AST_TOKEN_TYPE.CALL_EXPRESSION,
+          name: 'loop',
+          arguments: [
+            {
+              type: AST_TOKEN_TYPE.CALL_EXPRESSION,
+              name: 'lt',
+              arguments: [
+                { type: AST_TOKEN_TYPE.IDENTIFIER, value: 'x' },
+                { type: AST_TOKEN_TYPE.NUMBER, value: loopCount }
+              ]
+            },
+            {
+              type: AST_TOKEN_TYPE.CALL_EXPRESSION,
+              name: 'void',
+              arguments: [
+                {
+                  type: AST_TOKEN_TYPE.CALL_EXPRESSION,
+                  name: 'display',
+                  arguments: [
+                    { type: AST_TOKEN_TYPE.IDENTIFIER, value: 'str' }
+                  ],
+                },
+                {
+                  type: AST_TOKEN_TYPE.VARIABLE_DECLARATION,
+                  name: 'set',
+                  arguments: [
+                    { type: AST_TOKEN_TYPE.IDENTIFIER, value: 'str' },
+                    {
+                      type: AST_TOKEN_TYPE.CALL_EXPRESSION,
+                      name: 'concat',
+                      arguments: [
+                        { type: AST_TOKEN_TYPE.IDENTIFIER, value: 'str' },
+                        { type: AST_TOKEN_TYPE.STRING, value: ' *' }
+                      ],
+                    }
+                  ],
+                },
+                {
+                  type: AST_TOKEN_TYPE.VARIABLE_DECLARATION,
+                  name: 'set',
+                  arguments: [
+                    { type: AST_TOKEN_TYPE.IDENTIFIER, value: 'x' },
+                    {
+                      type: AST_TOKEN_TYPE.CALL_EXPRESSION,
+                      name: 'add',
+                      arguments: [
+                        { type: AST_TOKEN_TYPE.IDENTIFIER, value: 'x' },
+                        { type: AST_TOKEN_TYPE.NUMBER, value: 1 }
+                      ],
+                    }
+                  ],
+                }
+              ]
+            }
+          ],
+        }
+      ]
+    };
+
+    console.log = jest.fn();
+    evaluate(ast);
+
+    for (let i = 0; i < loopCount; i++) {
+      expect(console.log).toHaveBeenCalledWith(loopString);
+      loopString += ' *';
+    }
+  })
+
   it('should be able to log a value', () => {
     const ast: AST = {
       type: AST_TOKEN_TYPE.CALL_EXPRESSION,

@@ -16,7 +16,6 @@ export const repl = async () => {
     const { COMMAND } = input;
     
     if (COMMAND.trim()) {
-      process.stdout.write("   ");
       parseAndEvaluate(COMMAND);
     }
   } catch (error) {

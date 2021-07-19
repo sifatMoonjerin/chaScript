@@ -25,6 +25,6 @@ export const reduceWrapper = (fn: ReduceWrapperCallBack, fnName: string): Number
 
 export const checkValidNumberOfArguments = (args: ValueType[], expectedArgs: number) => {
   if (args.length !== expectedArgs) {
-    throw new RangeError(`${ERROR_MESSAGE.UNEXPECTED_ARGUMENTS_PRINT} ${args.length}`);
+    throw new RangeError(`${ERROR_MESSAGE.UNEXPECTED_ARGUMENTS} ${args.length}`);
   }
 }

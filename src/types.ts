@@ -17,7 +17,21 @@ export type NumberOperationReturnValue = (...args: ValueType[]) => number;
 
 export type StringOperationReturnValue = (...args: ValueType[]) => string;
 
+export type BooleanOperationReturnValue = (...args: ValueType[]) => boolean;
+
+export type VoidReturn = (...statement: ValueType[]) => undefined;
+
 export type EnvironmentMethods = {
+  void: VoidReturn;
+  display: VoidReturn;
+  toNumber: NumberOperationReturnValue;
+  toString: StringOperationReturnValue;
+  eq: BooleanOperationReturnValue;
+  neq: BooleanOperationReturnValue;
+  gt: BooleanOperationReturnValue;
+  gte: BooleanOperationReturnValue;
+  lt: BooleanOperationReturnValue;
+  lte: BooleanOperationReturnValue;
   add: NumberOperationReturnValue;
   subtract: NumberOperationReturnValue;
   multiply: NumberOperationReturnValue;
@@ -26,9 +40,6 @@ export type EnvironmentMethods = {
   max: NumberOperationReturnValue;
   min: NumberOperationReturnValue;
   concat: StringOperationReturnValue;
-  display: (...statement: ValueType[]) => ValueType;
-  toNumber: NumberOperationReturnValue;
-  toString: StringOperationReturnValue;
 }
 
 export type EnvironmentConstants = {
