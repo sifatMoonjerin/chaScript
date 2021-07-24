@@ -1,0 +1,24 @@
+(
+  void
+  (set num 140)
+  (set isPrime TRUE)
+  (set divisor 2)
+  (loop
+    (lt divisor num)
+    (void
+      (if
+        (eq (remainder num divisor) 0)
+        (set isPrime FALSE)
+      )
+      (set divisor (add divisor 1))
+    )
+  )
+  (if 
+    isPrime 
+    (display (concat (toString num) " is a prime number")) 
+  )
+  (if 
+    (neq isPrime TRUE) 
+    (display (concat (toString num) " is not a prime number")) 
+  )
+)
