@@ -11,6 +11,7 @@ It has some of the basic functionalities like variable declaration, math operati
    * [Boolean](#boolean)
    * [Function](#function)
    * [Keyword](#keyword)
+* [Video demonstration](#video-demonstration)
 * [License](#license)
 
 ## Getting started
@@ -138,6 +139,12 @@ Examples are listed in [examples](https://github.com/sifatMoonjerin/chaScript/tr
 | TRUE        | true              | (display TRUE)  |
 | FALSE       | false             | (display FALSE) |
 | PI          | 3.141592653589793 | (display PI)    |
+
+## Video demonstration
+
+Working with chaScript
+
+[![Demonstration on chaScript](https://img.youtube.com/vi/vLUVsYFBLBc/0.jpg)](https://youtu.be/vLUVsYFBLBc) 
 
 ## License
 MIT
